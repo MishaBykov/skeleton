@@ -1,8 +1,6 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.8)
 project(skeleton)
-
 set(CMAKE_CXX_STANDARD 14)
-
 include_directories(src)
 include_directories(tools/arageli/src/_pattern/arageli)
 include_directories(tools/arageli/src/arageli)
@@ -11,50 +9,10 @@ include_directories(tools/arageli/src/arageli/setenumrnd)
 include_directories(tools/arageli/src/arageli/smith)
 include_directories(tools/arageli/src/arageli/submatrix)
 include_directories(tools/arageli/src/arageli/subvector)
-include_directories(tools/arageli/test)
-include_directories(tools/arageli/test/_pattern)
-include_directories(tools/arageli/tool/ts/src/ts)
-
 add_executable(skeleton
         src/ddm.hpp
         src/ddmio.hpp
         src/skeleton.cpp
-        tools/arageli/example/adv_simplex_method.cpp
-        tools/arageli/example/big_int_basic.cpp
-        tools/arageli/example/big_int_rational_creation.cpp
-        tools/arageli/example/big_int_rational_functions.cpp
-        tools/arageli/example/big_int_rational_operations.cpp
-        tools/arageli/example/factorial.cpp
-        tools/arageli/example/gram_schmidt.cpp
-        tools/arageli/example/knuth_supergenerator.cpp
-        tools/arageli/example/lll_reduction.cpp
-        tools/arageli/example/lll_reduction_int.cpp
-        tools/arageli/example/matrix_basic.cpp
-        tools/arageli/example/matrix_column_row.cpp
-        tools/arageli/example/matrix_gauss.cpp
-        tools/arageli/example/matrix_linear_system.cpp
-        tools/arageli/example/matrix_rref.cpp
-        tools/arageli/example/matrix_smith.cpp
-        tools/arageli/example/polynom_basic.cpp
-        tools/arageli/example/residue.cpp
-        tools/arageli/example/residue_linear_system.cpp
-        tools/arageli/example/sparse_polynom_algorithms.cpp
-        tools/arageli/example/sparse_polynom_basic.cpp
-        tools/arageli/example/sparse_polynom_creation.cpp
-        tools/arageli/example/sparse_polynom_io.cpp
-        tools/arageli/example/sparse_polynom_iterator.cpp
-        tools/arageli/example/sparse_polynom_kroneker.cpp
-        tools/arageli/example/sparse_polynom_lagrange.cpp
-        tools/arageli/example/sparse_polynom_matrix.cpp
-        tools/arageli/example/sparse_polynom_matrix_smith.cpp
-        tools/arageli/example/sparse_polynom_operations.cpp
-        tools/arageli/example/sparse_polynom_other_operations.cpp
-        tools/arageli/example/sparse_polynom_properties.cpp
-        tools/arageli/example/vector_entries.cpp
-        tools/arageli/example/vector_lcm_gcd.cpp
-        tools/arageli/example/vector_matrix_arithmetic.cpp
-        tools/arageli/example/vector_matrix_creation.cpp
-        tools/arageli/example/vector_matrix_io.cpp
         tools/arageli/perf/karatsuba_vs_classic.cpp
         tools/arageli/src/_pattern/arageli/_pattern.cpp
         tools/arageli/src/_pattern/arageli/_pattern.hpp
@@ -214,143 +172,4 @@ add_executable(skeleton
         tools/arageli/src/arageli/vector.hpp
         tools/arageli/src/arageli/winograd.cpp
         tools/arageli/src/arageli/winograd.hpp
-        tools/arageli/test/_pattern/_pattern.cpp
-        tools/arageli/test/_pattern/_pattern.hpp
-        tools/arageli/test/algebraic_rref.cpp
-        tools/arageli/test/berlekamp.cpp
-        tools/arageli/test/berlekamp_hensel.cpp
-        tools/arageli/test/big_int_io_binary.cpp
-        tools/arageli/test/bigint_construct.cpp
-        tools/arageli/test/bigint_double_plus_double_minus.cpp
-        tools/arageli/test/bigint_even_odd.cpp
-        tools/arageli/test/bigint_multiply_divide.cpp
-        tools/arageli/test/bigint_null_unit.cpp
-        tools/arageli/test/bigint_plus_minus.cpp
-        tools/arageli/test/bigint_swap.cpp
-        tools/arageli/test/brent.cpp
-        tools/arageli/test/bug_1971908_lll_infinite_loop.cpp
-        tools/arageli/test/bug_2574442_berlekamp_crash_1.cpp
-        tools/arageli/test/bug_2574442_berlekamp_crash_2.cpp
-        tools/arageli/test/cone.cpp
-        tools/arageli/test/dense_sparse_polynom.cpp
-        tools/arageli/test/fft_multiplication.cpp
-        tools/arageli/test/find_small_primes.cpp
-        tools/arageli/test/gcd.cpp
-        tools/arageli/test/intcount_barvinok.cpp
-        tools/arageli/test/integer_divide.cpp
-        tools/arageli/test/integer_size.cpp
-        tools/arageli/test/io_simple_binary.hpp
-        tools/arageli/test/karatsuba.cpp
-        tools/arageli/test/lll_reduction.cpp
-        tools/arageli/test/mandatory_object_functions.cpp
-        tools/arageli/test/matrix_add_scalar.cpp
-        tools/arageli/test/matrix_addmul_cols.cpp
-        tools/arageli/test/matrix_addmul_rows.cpp
-        tools/arageli/test/matrix_det.cpp
-        tools/arageli/test/matrix_det_int.cpp
-        tools/arageli/test/matrix_insert_col.cpp
-        tools/arageli/test/matrix_insert_row.cpp
-        tools/arageli/test/matrix_inverse.cpp
-        tools/arageli/test/matrix_io_binary.cpp
-        tools/arageli/test/matrix_is_null.cpp
-        tools/arageli/test/matrix_is_square.cpp
-        tools/arageli/test/matrix_is_unit.cpp
-        tools/arageli/test/matrix_matrix_add.cpp
-        tools/arageli/test/matrix_matrix_mult.cpp
-        tools/arageli/test/matrix_mul_scalar.cpp
-        tools/arageli/test/matrix_mult_col.cpp
-        tools/arageli/test/matrix_mult_row.cpp
-        tools/arageli/test/matrix_opposite.cpp
-        tools/arageli/test/matrix_ops.cpp
-        tools/arageli/test/matrix_ops.hpp
-        tools/arageli/test/matrix_string_constructor.cpp
-        tools/arageli/test/matrix_swap_col.cpp
-        tools/arageli/test/matrix_swap_row.cpp
-        tools/arageli/test/matrix_transpose.cpp
-        tools/arageli/test/minkowski_diff.cpp
-        tools/arageli/test/orthogonalization_generic_gram_schmidt.cpp
-        tools/arageli/test/pollard_pm1.cpp
-        tools/arageli/test/polyhedron_distance.cpp
-        tools/arageli/test/polynom_init_convert.cpp
-        tools/arageli/test/polynom_io_binary.cpp
-        tools/arageli/test/prime_miller_rabin.cpp
-        tools/arageli/test/rand.cpp
-        tools/arageli/test/rand.hpp
-        tools/arageli/test/rational.cpp
-        tools/arageli/test/rational.hpp
-        tools/arageli/test/rational_compares.cpp
-        tools/arageli/test/rational_constructor.cpp
-        tools/arageli/test/rational_ifloor_iceil_frac_abs.cpp
-        tools/arageli/test/rational_inverse.cpp
-        tools/arageli/test/rational_io_binary.cpp
-        tools/arageli/test/rational_is_integer.cpp
-        tools/arageli/test/rational_is_normal.cpp
-        tools/arageli/test/rational_is_null.cpp
-        tools/arageli/test/rational_is_unit.cpp
-        tools/arageli/test/rational_mul_div.cpp
-        tools/arageli/test/rational_numer_denom.cpp
-        tools/arageli/test/rational_opposite.cpp
-        tools/arageli/test/rational_plus_minus.cpp
-        tools/arageli/test/rational_sign.cpp
-        tools/arageli/test/rational_swap.cpp
-        tools/arageli/test/residue.cpp
-        tools/arageli/test/residue_factory.cpp
-        tools/arageli/test/rho_pollard_function.cpp
-        tools/arageli/test/ring.hpp
-        tools/arageli/test/skeleton_motzkin_burger.cpp
-        tools/arageli/test/smith_integer.cpp
-        tools/arageli/test/sparse_polynom_cmp.cpp
-        tools/arageli/test/sparse_polynom_multiply_divide_monom.cpp
-        tools/arageli/test/sparse_polynom_multiply_divide_polynom.cpp
-        tools/arageli/test/sparse_polynom_multiply_divide_scalar.cpp
-        tools/arageli/test/sparse_polynom_plus_minus_monom.cpp
-        tools/arageli/test/sparse_polynom_plus_minus_polynom.cpp
-        tools/arageli/test/sparse_polynom_plus_minus_scalar.cpp
-        tools/arageli/test/stdafx.cpp
-        tools/arageli/test/stdafx.hpp
-        tools/arageli/test/test1.hpp
-        tools/arageli/test/test1part1.cpp
-        tools/arageli/test/test1part2.cpp
-        tools/arageli/test/test1part3.cpp
-        tools/arageli/test/test1part4.cpp
-        tools/arageli/test/test2.cpp
-        tools/arageli/test/test3.cpp
-        tools/arageli/test/test4part1.cpp
-        tools/arageli/test/test4part2.cpp
-        tools/arageli/test/test4part3.cpp
-        tools/arageli/test/test4part4.cpp
-        tools/arageli/test/test4part5.cpp
-        tools/arageli/test/test4part6.cpp
-        tools/arageli/test/test4part7.cpp
-        tools/arageli/test/test4part8.cpp
-        tools/arageli/test/test5.cpp
-        tools/arageli/test/timer_resolution.cpp
-        tools/arageli/test/triangulate.cpp
-        tools/arageli/test/type_pair_traits_for_bn.cpp
-        tools/arageli/test/type_pair_traits_is_convertible.cpp
-        tools/arageli/test/universal.hpp
-        tools/arageli/test/vector.cpp
-        tools/arageli/test/vector.hpp
-        tools/arageli/test/vector_access.cpp
-        tools/arageli/test/vector_compares.cpp
-        tools/arageli/test/vector_constructor.cpp
-        tools/arageli/test/vector_inverse.cpp
-        tools/arageli/test/vector_io_binary.cpp
-        tools/arageli/test/vector_is_null.cpp
-        tools/arageli/test/vector_is_unit.cpp
-        tools/arageli/test/vector_matrix_init.cpp
-        tools/arageli/test/vector_mix_comp.cpp
-        tools/arageli/test/vector_mul_div.cpp
-        tools/arageli/test/vector_opposite.cpp
-        tools/arageli/test/vector_plus_minus.cpp
-        tools/arageli/test/vector_swap.cpp
-        tools/arageli/test/vector_take_subvector.cpp
-        tools/arageli/test/winograd.cpp
-        tools/arageli/tool/ts/src/ts/config.hpp
-        tools/arageli/tool/ts/src/ts/strcompare.hpp
-        tools/arageli/tool/ts/src/ts/ts.cpp
-        tools/arageli/tool/ts/src/ts/ts.hpp
-        tools/arageli/tool/ts/src/ts/tsowndefs.hpp
-        tools/arageli/tool/ts/src/ts/tsstream.hpp
-        tools/arageli/tool/ts/src/ts/tstcontainer.cpp
-        tools/arageli/tool/ts/src/ts/tstcontainer.hpp)
+        )

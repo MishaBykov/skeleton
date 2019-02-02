@@ -41,6 +41,14 @@ using namespace Arageli;
 #define ALIGNCOLUMNS       1
 #define NOCOLUMNALIGNMENT  2
 
+#define  MATRIXOUTPUTFORMATCOLUMN 1
+
+template <typename A_type>
+void matrix_input(std::istream& s, A_type& A);
+
+template <typename A_type>
+void matrix_output(std::ostream& s, const A_type& A, int matrixoutputformat = MATRIXOUTPUTFORMATCOLUMN);
+
 #define WRITEOUTPUT(msg)               \
   if (outputonstdout)                  \
   {                                    \
@@ -427,11 +435,10 @@ void output_time(time_t begin_time, time_t end_time, timer time_sec,
     t = fmod(t, 60);                                                                                  
     WRITESUMMARY(t << " s)\n")                                                             
 }                                                                                                   
-                                                                                              
 
-template <typename A_type>
-    void matrix_input(std::istream& s, A_type& A)
-{
+
+template<typename A_type>
+void matrix_input(std::istream &s, A_type &A) {
     typedef typename A_type::difference_type index;
     typedef typename A_type::value_type T;
 
@@ -450,6 +457,101 @@ template <typename A_type>
             s >> A(i, j);
 }
 
+template<typename A_type>
+void matrix_output(std::ostream &s, const A_type &A, int matrixoutputformat) {
+    typedef typename A_type::difference_type index;
+    typedef typename A_type::value_type T;
+
+    index m = A.nrows();
+    index n = A.ncols();
+
+    s << m << " " << n << "\n";
+
+    if (A.is_empty())
+        return;
+
+    if (matrixoutputformat == NOCOLUMNALIGNMENT)
+    {
+        for(index i = 0; i < m; ++i)
+        {
+            for(index j = 0; j < n; ++j)
+                s << A(i, j) << " ";
+            s << "\n";
+        }
+    }
+    else if (matrixoutputformat == ALIGNCOLUMNS)
+    {
+        std::vector<std::string> buf(A.size());
+        std::vector<index> maxlens(n);
+        index jj = 0;    // index for buf
+
+        for(index j = 0; j < n; ++j)
+        {
+            index maxlen = 0;
+
+            for(index i = 0; i < m; ++i, ++jj)
+            {
+                std::ostringstream strbuf;
+                strbuf.copyfmt(s);
+                strbuf << A(i, j);
+                buf[jj] = strbuf.str();
+
+                if(buf[jj].length() > maxlen)
+                    maxlen = buf[jj].length();
+            }
+
+            maxlens[j] = maxlen;
+        }
+
+        for(index i = 0; i < m; ++i)
+        {
+            for(index j = 0; j < n; ++j)
+            {
+                std::string& str = buf[j*m + i];
+                std::size_t numspace = maxlens[j] - str.length() + 1;
+
+                s << std::string(numspace, ' ') << str;
+            }
+
+            s << '\n';
+        }
+    }
+    else // matrixoutputformat == COLUMNSEQUALWIDTH
+    {
+        std::vector<std::string> buf(A.size());
+        index jj = 0;    // index for buf
+        index maxlen = 0;
+
+        for(index i = 0; i < m; ++i)
+        {
+            for(index j = 0; j < n; ++j, ++jj)
+            {
+                std::ostringstream strbuf;
+                strbuf.copyfmt(s);
+                strbuf << A(i, j);
+                buf[jj] = strbuf.str();
+
+                if(buf[jj].length() > maxlen)
+                    maxlen = buf[jj].length();
+            }
+        }
+
+        jj = 0;
+        for(index i = 0; i < m; ++i)
+        {
+            for(index j = 0; j < n; ++j, ++jj)
+            {
+                std::string& str = buf[jj];
+                std::size_t numspace = maxlen - str.length() + 1;
+
+                s << std::string(numspace, ' ') << str;
+            }
+
+            s << '\n';
+        }
+    }
+}
+
 //template <typename A_type>
 //	void matrix_output(std::ostream& s, const A_type& A, int matrixoutputformat = MATRIXOUTPUTFORMATCOLUMN)
 // MATRIXOUTPUTFORMATSIMPLE 0
@@ -459,101 +561,7 @@ template <typename A_type>
 #define MATRIXOUTPUTFORMATSIMPLE 0
 #define  MATRIXOUTPUTFORMATCOLUMN 1
 #define  MATRIXOUTPUTFORMATEQUAL  2
-    template <typename A_type>
-	void matrix_output(std::ostream& s, const A_type& A, int matrixoutputformat = MATRIXOUTPUTFORMATCOLUMN)
-{
-	typedef typename A_type::difference_type index;
-	typedef typename A_type::value_type T;
 
-	index m = A.nrows();
-	index n = A.ncols();
-
-	s << m << " " << n << "\n";
-
-	if (A.is_empty())
-		return;
-
-	if (matrixoutputformat == NOCOLUMNALIGNMENT)
-	{
-		for(index i = 0; i < m; ++i)
-		{
-			for(index j = 0; j < n; ++j)
-				s << A(i, j) << " ";
-			s << "\n";
-		}
-	}
-	else if (matrixoutputformat == ALIGNCOLUMNS)
-	{
-		std::vector<std::string> buf(A.size());
-		std::vector<index> maxlens(n);
-		index jj = 0;    // index for buf
-
-		for(index j = 0; j < n; ++j)
-		{
-			index maxlen = 0;
-
-			for(index i = 0; i < m; ++i, ++jj)
-			{
-				std::ostringstream strbuf;
-				strbuf.copyfmt(s);
-				strbuf << A(i, j);
-				buf[jj] = strbuf.str();
-
-				if(buf[jj].length() > maxlen)
-					maxlen = buf[jj].length();
-			}
-
-			maxlens[j] = maxlen;
-		}
-
-		for(index i = 0; i < m; ++i)
-		{
-			for(index j = 0; j < n; ++j)
-			{
-				std::string& str = buf[j*m + i];
-				std::size_t numspace = maxlens[j] - str.length() + 1;
-
-				s << std::string(numspace, ' ') << str;
-			}
-
-			s << '\n';
-		}
-	}
-	else // matrixoutputformat == COLUMNSEQUALWIDTH
-	{
-		std::vector<std::string> buf(A.size());
-		index jj = 0;    // index for buf
-		index maxlen = 0;
-
-		for(index i = 0; i < m; ++i)
-		{
-			for(index j = 0; j < n; ++j, ++jj)
-			{
-				std::ostringstream strbuf;
-				strbuf.copyfmt(s);
-				strbuf << A(i, j);
-				buf[jj] = strbuf.str();
-
-				if(buf[jj].length() > maxlen)
-					maxlen = buf[jj].length();
-			}
-		}
-
-		jj = 0;
-		for(index i = 0; i < m; ++i)
-		{
-			for(index j = 0; j < n; ++j, ++jj)
-			{
-				std::string& str = buf[jj];
-				std::size_t numspace = maxlen - str.length() + 1;
-
-				s << std::string(numspace, ' ') << str;
-			}
-
-			s << '\n';
-		}
-	}
-}
 
 template <typename T>
 void visual_matlab(matrix<T> ext, std::vector<std::list<size_t> >& ineinc, std::ostream& mfile)

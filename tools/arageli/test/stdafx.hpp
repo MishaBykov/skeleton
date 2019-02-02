@@ -33,7 +33,7 @@
 
 #pragma once
 
-#include <arageli/config.hpp>
+#include <config.hpp>
 
 #include <cstdlib>
 #include <iostream>
@@ -45,9 +45,9 @@
 #include <map>
 
 #include <arageli.hpp>
-#include <arageli/random.hpp>
+#include <random.hpp>
 
-#include <ts/ts.hpp>
+#include <ts.hpp>
 
 #include "matrix_ops.hpp"
 #include "rand.hpp"

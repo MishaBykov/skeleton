@@ -38,6 +38,7 @@
 #define __ta_matrix_ops_hpp__
 
 
+#include <tsstream.hpp>
 #include "stdafx.hpp"
 
 

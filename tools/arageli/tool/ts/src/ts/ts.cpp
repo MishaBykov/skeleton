@@ -8,7 +8,7 @@
 #include "ts.hpp"
 
 #ifndef TS_WITHOUT_BOOST
-    #include <boost/program_options.hpp>
+    #include <program_options.hpp>
 #endif
 
 #include "config.hpp"

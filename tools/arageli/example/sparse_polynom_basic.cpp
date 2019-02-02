@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 using namespace Arageli;
 using std::cout;

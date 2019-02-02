@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 using namespace Arageli;
 using ctrl::simplex_method::adv_simplex_method_alg_slog;

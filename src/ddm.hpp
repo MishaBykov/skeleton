@@ -27,7 +27,7 @@
 #ifndef DDM_HPP_
 #define DDM_HPP_
 
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 #include <iostream>
 #include <string>
@@ -125,7 +125,7 @@ double gcd(big_int a, big_int b)
 // abstract
 
 template <class T>
-double vgcd(T a) // Это временный костыль до устранения возможного бага в Arageli (gcd(вектор))  После его устранения все вызовы vgcd заменить на gcd
+double vgcd(T a) // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ Arageli (gcd(пїЅпїЅпїЅпїЅпїЅпїЅ))  пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ vgcd пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ gcd
 {
   return std::abs(gcd(a));
 }
@@ -136,8 +136,8 @@ template <class T>
   void gauss(const matrix<T>& a, matrix<T>& f, matrix<T>& e, matrix<T>& q, size_t& r,
     vector<size_t>& perm, const int intarith, const T& eps)
 {
-/*Элементарными преобразованиями над строками матрицы transpose(a)
-  и перестановкой ее столбцов приводит ее к диагональному виду q:
+/*пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ transpose(a)
+  пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ q:
     f * transpose(a) * P = q.*/
 
   size_t m = a.nrows();
@@ -183,7 +183,7 @@ template <class T>
       f.mult_row(i, -1);
     }
 
-    /* В i-м столбце образуем все нули */
+    /* пїЅ i-пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
     if (intarith)
     {
       T b = q(i, i);
@@ -470,7 +470,7 @@ next_ray: ;
   return 1;
 }
 
-// Algebraic test - работает очень медленно и только с usual_order
+// Algebraic test - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ usual_order
 
 template <typename T>
 int adjacent_alg(const matrix<T>& a, size_t ray1, size_t ray2, size_t m, size_t n, size_t r, 
@@ -1455,10 +1455,10 @@ std::cout << "\n perm = " << perm;
   {
     if (!intarith)
     {
-       T delta = firstnonzero((*cur)->coordinates, eps); // Это съедает много времени, тем более, если поставить в цикл
-       (*cur)->coordinates /= delta;                     // Но если это приводит к ошибкам, то нужно оставить там      
-       (*cur)->discrepancy /= delta;                     // (см. 2 закомментированных куска
-       clearzeros((*cur)->coordinates, eps);             // Да, это действительно приводит к ошибкам
+       T delta = firstnonzero((*cur)->coordinates, eps); // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+       (*cur)->coordinates /= delta;                     // пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ      
+       (*cur)->discrepancy /= delta;                     // (пїЅпїЅ. 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+       clearzeros((*cur)->coordinates, eps);             // пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
        clearzeros((*cur)->discrepancy, eps);
     }
     v.assign_row(i, (*cur)->coordinates);
@@ -1483,7 +1483,7 @@ std::cout << "\n perm = " << perm;
   }
   
 /*
-  if (r <= 4) // отдельно нужно рассмотреть случай 2d
+  if (r <= 4) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 2d
     facets3d(adj, ineinc);
 */  
   dispose_ray_list(rays);
@@ -1629,7 +1629,7 @@ void post_construct_inetype_and_ridges(
 
     if (ine_type[i] == INE_IMPLICIT_EQUATION) 
       continue;
-    // Добавить: if num_zeros < d_U - d_L - 1 // then redundant
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: if num_zeros < d_U - d_L - 1 // then redundant
     for (size_t ii = 0; ii < m; ii++)
     {
       if (ii != i && ine_type[ii] == INE_FACET)
@@ -1669,7 +1669,7 @@ void post_construct_inetype_and_ridges(
           for (size_t j = 0; j < blocks; j++)
             uni[j] = p_i[j] | p_ii[j];
             //uni[j] = p_i[j] & p_ii[j];
-          // if (set_card(uni, iine + 1) > iine + 1 - r + 2) // ДОбавить!
+          // if (set_card(uni, iine + 1) > iine + 1 - r + 2) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
           // {//if (set_card(uni, iine + 1) < r - 2)
           //   return 0;
           // }

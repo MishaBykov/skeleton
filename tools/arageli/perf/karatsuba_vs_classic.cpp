@@ -37,7 +37,7 @@
 */
 
 
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 using namespace Arageli;
 // We need internal namespace because of using interal big_int representation.

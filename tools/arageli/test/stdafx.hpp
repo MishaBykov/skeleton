@@ -44,7 +44,7 @@
 #include <string>
 #include <map>
 
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 #include <arageli/random.hpp>
 
 #include <ts/ts.hpp>

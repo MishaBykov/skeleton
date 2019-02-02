@@ -34,7 +34,7 @@
 #include "ddm.hpp"
 #include "ddmio.hpp"
 
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 using namespace Arageli;
 

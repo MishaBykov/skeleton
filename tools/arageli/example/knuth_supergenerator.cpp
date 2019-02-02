@@ -1,5 +1,5 @@
 #include <iostream>
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 using namespace Arageli;
 using std::cout;

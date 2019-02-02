@@ -19,7 +19,7 @@
 #ifndef DDMIO_HPP_
 #define DDMIO_HPP_
 
-#include <arageli/arageli.hpp>
+#include <arageli.hpp>
 
 #include <iostream>
 #include <string>

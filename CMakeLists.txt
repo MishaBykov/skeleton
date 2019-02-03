@@ -13,7 +13,6 @@ add_executable(skeleton
         src/ddm.hpp
         src/ddmio.hpp
         src/skeleton.cpp
-        tools/arageli/perf/karatsuba_vs_classic.cpp
         tools/arageli/src/_pattern/arageli/_pattern.cpp
         tools/arageli/src/_pattern/arageli/_pattern.hpp
         tools/arageli/src/arageli/hermite/classic.cpp

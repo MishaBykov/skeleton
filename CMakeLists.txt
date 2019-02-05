@@ -1,174 +1,28 @@
 cmake_minimum_required(VERSION 3.8)
+
 project(skeleton)
+
 set(CMAKE_CXX_STANDARD 14)
-include_directories(src)
-include_directories(tools/arageli/src/_pattern/arageli)
-include_directories(tools/arageli/src/arageli)
-include_directories(tools/arageli/src/arageli/hermite)
-include_directories(tools/arageli/src/arageli/setenumrnd)
-include_directories(tools/arageli/src/arageli/smith)
-include_directories(tools/arageli/src/arageli/submatrix)
-include_directories(tools/arageli/src/arageli/subvector)
-add_executable(skeleton
-        src/ddm.hpp
-        src/ddmio.hpp
-        src/skeleton.cpp
-        tools/arageli/src/_pattern/arageli/_pattern.cpp
-        tools/arageli/src/_pattern/arageli/_pattern.hpp
-        tools/arageli/src/arageli/hermite/classic.cpp
-        tools/arageli/src/arageli/hermite/classic.hpp
-        tools/arageli/src/arageli/hermite/domich.cpp
-        tools/arageli/src/arageli/hermite/domich.hpp
-        tools/arageli/src/arageli/hermite/hafner.cpp
-        tools/arageli/src/arageli/hermite/hafner.hpp
-        tools/arageli/src/arageli/hermite/storjohann.cpp
-        tools/arageli/src/arageli/hermite/storjohann.hpp
-        tools/arageli/src/arageli/setenumrnd/grid.hpp
-        tools/arageli/src/arageli/setenumrnd/integer.hpp
-        tools/arageli/src/arageli/setenumrnd/vector.hpp
-        tools/arageli/src/arageli/smith/classic.cpp
-        tools/arageli/src/arageli/smith/classic.hpp
-        tools/arageli/src/arageli/smith/near_optimal.cpp
-        tools/arageli/src/arageli/smith/near_optimal.hpp
-        tools/arageli/src/arageli/smith/storjohann.cpp
-        tools/arageli/src/arageli/smith/storjohann.hpp
-        tools/arageli/src/arageli/submatrix/hpair.hpp
-        tools/arageli/src/arageli/submatrix/indexed.hpp
-        tools/arageli/src/arageli/subvector/indexed.hpp
-        tools/arageli/src/arageli/_utility.cpp
-        tools/arageli/src/arageli/_utility.hpp
-        tools/arageli/src/arageli/advsimplmeth.cpp
-        tools/arageli/src/arageli/advsimplmeth.hpp
-        tools/arageli/src/arageli/algebraic.cpp
-        tools/arageli/src/arageli/algebraic.hpp
-        tools/arageli/src/arageli/algebrslt.cpp
-        tools/arageli/src/arageli/algebrslt.hpp
-        tools/arageli/src/arageli/arageli.hpp
-        tools/arageli/src/arageli/auto_link.hpp
-        tools/arageli/src/arageli/bareiss.cpp
-        tools/arageli/src/arageli/bareiss.hpp
-        tools/arageli/src/arageli/basefuncs.hpp
-        tools/arageli/src/arageli/berlekamp_hensel.cpp
-        tools/arageli/src/arageli/berlekamp_hensel.hpp
-        tools/arageli/src/arageli/big_const.cpp
-        tools/arageli/src/arageli/big_const.hpp
-        tools/arageli/src/arageli/big_float.cpp
-        tools/arageli/src/arageli/big_float.hpp
-        tools/arageli/src/arageli/big_int.cpp
-        tools/arageli/src/arageli/big_int.hpp
-        tools/arageli/src/arageli/bigar.cpp
-        tools/arageli/src/arageli/bigar.hpp
-        tools/arageli/src/arageli/cantor_zassenhaus.cpp
-        tools/arageli/src/arageli/cantor_zassenhaus.hpp
-        tools/arageli/src/arageli/cmp.hpp
-        tools/arageli/src/arageli/cone.cpp
-        tools/arageli/src/arageli/cone.hpp
-        tools/arageli/src/arageli/config.hpp
-        tools/arageli/src/arageli/ctrl_latexlog.hpp
-        tools/arageli/src/arageli/ctrl_slog.hpp
-        tools/arageli/src/arageli/exception.cpp
-        tools/arageli/src/arageli/exception.hpp
-        tools/arageli/src/arageli/factory.hpp
-        tools/arageli/src/arageli/fft.hpp
-        tools/arageli/src/arageli/frwrddecl.hpp
-        tools/arageli/src/arageli/function_traits.hpp
-        tools/arageli/src/arageli/functional.hpp
-        tools/arageli/src/arageli/gauss.cpp
-        tools/arageli/src/arageli/gauss.hpp
-        tools/arageli/src/arageli/gcd.cpp
-        tools/arageli/src/arageli/gcd.hpp
-        tools/arageli/src/arageli/generic.cpp
-        tools/arageli/src/arageli/generic.hpp
-        tools/arageli/src/arageli/gram_schmidt.cpp
-        tools/arageli/src/arageli/gram_schmidt.hpp
-        tools/arageli/src/arageli/groebner_basis.cpp
-        tools/arageli/src/arageli/groebner_basis.hpp
-        tools/arageli/src/arageli/hermite.cpp
-        tools/arageli/src/arageli/hermite.hpp
-        tools/arageli/src/arageli/intalg.cpp
-        tools/arageli/src/arageli/intalg.hpp
-        tools/arageli/src/arageli/intconvex.cpp
-        tools/arageli/src/arageli/intconvex.hpp
-        tools/arageli/src/arageli/intcount_barvinok.cpp
-        tools/arageli/src/arageli/intcount_barvinok.hpp
-        tools/arageli/src/arageli/interval.hpp
-        tools/arageli/src/arageli/io.cpp
-        tools/arageli/src/arageli/io.hpp
-        tools/arageli/src/arageli/iomanip.hpp
-        tools/arageli/src/arageli/iteradapt.hpp
-        tools/arageli/src/arageli/karatsuba.cpp
-        tools/arageli/src/arageli/karatsuba.hpp
-        tools/arageli/src/arageli/linopt.cpp
-        tools/arageli/src/arageli/linopt.hpp
-        tools/arageli/src/arageli/lll.cpp
-        tools/arageli/src/arageli/lll.hpp
-        tools/arageli/src/arageli/logarithm.cpp
-        tools/arageli/src/arageli/logarithm.hpp
-        tools/arageli/src/arageli/matrix.cpp
-        tools/arageli/src/arageli/matrix.hpp
-        tools/arageli/src/arageli/misc.hpp
-        tools/arageli/src/arageli/mixcomp.hpp
-        tools/arageli/src/arageli/motzkin_burger.cpp
-        tools/arageli/src/arageli/motzkin_burger.hpp
-        tools/arageli/src/arageli/orthogonal.cpp
-        tools/arageli/src/arageli/orthogonal.hpp
-        tools/arageli/src/arageli/pollard_mult.cpp
-        tools/arageli/src/arageli/pollard_mult.hpp
-        tools/arageli/src/arageli/polyalg.hpp
-        tools/arageli/src/arageli/polyhedron.cpp
-        tools/arageli/src/arageli/polyhedron.hpp
-        tools/arageli/src/arageli/polyhedron_relation.cpp
-        tools/arageli/src/arageli/polyhedron_relation.hpp
-        tools/arageli/src/arageli/polynom.cpp
-        tools/arageli/src/arageli/polynom.hpp
-        tools/arageli/src/arageli/powerest.cpp
-        tools/arageli/src/arageli/powerest.hpp
-        tools/arageli/src/arageli/prime.cpp
-        tools/arageli/src/arageli/prime.hpp
-        tools/arageli/src/arageli/random.hpp
-        tools/arageli/src/arageli/rational.cpp
-        tools/arageli/src/arageli/rational.hpp
-        tools/arageli/src/arageli/refcntr.hpp
-        tools/arageli/src/arageli/residue.hpp
-        tools/arageli/src/arageli/resultant.cpp
-        tools/arageli/src/arageli/resultant.hpp
-        tools/arageli/src/arageli/rndbase.hpp
-        tools/arageli/src/arageli/setenumrnd.hpp
-        tools/arageli/src/arageli/sideset.cpp
-        tools/arageli/src/arageli/sideset.hpp
-        tools/arageli/src/arageli/simplex_method.hpp
-        tools/arageli/src/arageli/skeleton.hpp
-        tools/arageli/src/arageli/smith.cpp
-        tools/arageli/src/arageli/smith.hpp
-        tools/arageli/src/arageli/smithpoly.cpp
-        tools/arageli/src/arageli/smithpoly.hpp
-        tools/arageli/src/arageli/solve_linsys.cpp
-        tools/arageli/src/arageli/solve_linsys.hpp
-        tools/arageli/src/arageli/sparse_multipolynom.cpp
-        tools/arageli/src/arageli/sparse_multipolynom.hpp
-        tools/arageli/src/arageli/sparse_polynom.cpp
-        tools/arageli/src/arageli/sparse_polynom.hpp
-        tools/arageli/src/arageli/sqrfree.hpp
-        tools/arageli/src/arageli/std_import.hpp
-        tools/arageli/src/arageli/sturm.cpp
-        tools/arageli/src/arageli/sturm.hpp
-        tools/arageli/src/arageli/tex_cartesian2d.cpp
-        tools/arageli/src/arageli/tex_cartesian2d.hpp
-        tools/arageli/src/arageli/texout.cpp
-        tools/arageli/src/arageli/texout.hpp
-        tools/arageli/src/arageli/timer.cpp
-        tools/arageli/src/arageli/timer.hpp
-        tools/arageli/src/arageli/triangulation.cpp
-        tools/arageli/src/arageli/triangulation.hpp
-        tools/arageli/src/arageli/type_opers.cpp
-        tools/arageli/src/arageli/type_opers.hpp
-        tools/arageli/src/arageli/type_pair_traits.hpp
-        tools/arageli/src/arageli/type_traits.cpp
-        tools/arageli/src/arageli/type_traits.hpp
-        tools/arageli/src/arageli/vecalg.cpp
-        tools/arageli/src/arageli/vecalg.hpp
-        tools/arageli/src/arageli/vector.cpp
-        tools/arageli/src/arageli/vector.hpp
-        tools/arageli/src/arageli/winograd.cpp
-        tools/arageli/src/arageli/winograd.hpp
-        )
+
+
+add_subdirectory(tools/arageli)
+
+
+add_executable(
+    skeleton
+    src/ddm.hpp
+    src/ddmio.hpp
+    src/skeleton.cpp
+)
+
+target_include_directories(skeleton
+    PUBLIC src
+    )
+
+target_link_libraries(skeleton arageli)
+
+target_include_directories(
+    arageli PRIVATE
+    tools/arageli/src
+)
+

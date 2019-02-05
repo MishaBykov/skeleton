@@ -36,7 +36,7 @@
 */
 
 
-#include "config.hpp"
+#include <arageli/config.hpp>
 
 #if !defined(ARAGELI_INCLUDE_CPP_WITH_EXPORT_TEMPLATE) ||    \
     defined(ARAGELI_INCLUDE_CPP_WITH_EXPORT_TEMPLATE__pattern)

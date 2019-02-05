@@ -27,7 +27,7 @@
 #ifndef DDM_HPP_
 #define DDM_HPP_
 
-#include <arageli.hpp>
+#include <arageli/arageli.hpp>
 
 #include <iostream>
 #include <string>

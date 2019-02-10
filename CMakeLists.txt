@@ -18,12 +18,6 @@ add_library(skeleton SHARED
 target_include_directories( arageli PUBLIC
     src
     )
-#add_executable(
-#    skeleton
-#    src/ddm.hpp
-#    src/ddmio.hpp
-#    src/skeleton.cpp
-#    src/skeleton.h src/main.cpp)
 
 target_include_directories(skeleton
     PUBLIC src

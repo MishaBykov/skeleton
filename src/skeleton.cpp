@@ -33,6 +33,8 @@
 #include <fstream>
 #include "ddm.hpp"
 #include "ddmio.hpp"
+#include "skeleton.h"
+
 
 #include <arageli/arageli.hpp>
 
@@ -279,7 +281,7 @@ void read_matrices_call_ddm_and_print_results(
   }
 }                                                                                          
                                                                                            
-int main(int argc, char *argv[])
+int Skeleton::main(int argc, char *argv[])
 {
   int modification = DDM_MIN_INDEX;
   int output_ine = 0;
@@ -878,3 +880,24 @@ int main(int argc, char *argv[])
   return 0;
 }
 
+int Skeleton::init(std::string args) {
+  std::vector<std::string> result_split(1, "");
+  std::stringstream ss(args);
+  std::string result;
+  while (getline(ss, result, ' '))
+  {
+    if(result != "")
+      result_split.push_back(result);
+  }
+  char** const argv = new char*[result_split.size()];
+  for(int i = 0; i < result_split.size(); i++)
+  {
+    argv[i] = new char[result_split[i].size()];
+    strcpy(argv[i], result_split[i].c_str());
+  }
+  std::cout << Skeleton::main(result_split.size(), argv );
+  for(int i = 0; result_split.size() > i; i++)
+    delete[] argv[i];
+  delete[] argv;
+  return 0;
+}

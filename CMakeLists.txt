@@ -7,13 +7,23 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(tools/arageli)
 
-
-add_executable(
-    skeleton
+add_library(skeleton SHARED
     src/ddm.hpp
     src/ddmio.hpp
     src/skeleton.cpp
+    src/skeleton.h
+#    src/main.cpp
 )
+
+target_include_directories( arageli PUBLIC
+    src
+    )
+#add_executable(
+#    skeleton
+#    src/ddm.hpp
+#    src/ddmio.hpp
+#    src/skeleton.cpp
+#    src/skeleton.h src/main.cpp)
 
 target_include_directories(skeleton
     PUBLIC src
